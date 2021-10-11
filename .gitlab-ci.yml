@@ -1,0 +1,46 @@
+---
+variables:
+  TF_ROOT: ${CI_PROJECT_DIR}
+
+cache:
+  key: tf
+  paths:
+    - ${TF_ROOT}/.terraform/
+before_script:
+  - terraform --version
+  - echo $BASE64_GCP_CREDS | base64 -d > ${TF_ROOT}/sa.json
+  - export GOOGLE_APPLICATION_CREDENTIALS="${TF_ROOT}/sa.json"
+  - cd ${TF_ROOT}
+
+default:
+  image:
+    name: hashicorp/terraform:1.0.8
+    entrypoint: ["/bin/sh", "-c"]
+
+stages:
+  - init
+  - plan
+  - apply
+
+terraform init:
+  stage: init
+  script:
+    - ls -lah ${TF_ROOT}
+    - terraform init
+
+terraform plan:
+  stage: plan
+  script:
+    - ls -lah ${TF_ROOT}
+    - terraform init -input=false -reconfigure
+    - terraform plan -out="plan.cache"
+  artifacts:
+    paths:
+      - ${TF_ROOT}/plan.cache
+
+terraform apply:
+  stage: apply
+  script:
+    - terraform init -input=false -reconfigure
+    - terraform apply -input=false "plan.cache"
+  when: manual

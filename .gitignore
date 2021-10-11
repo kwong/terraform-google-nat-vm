@@ -1,0 +1,8 @@
+.terraform.lock.hcl
+.terraform
+*.tfstate*
+*.tfplan
+
+/sa.json
+/sa-b64.json
+#/terraform.tfvars

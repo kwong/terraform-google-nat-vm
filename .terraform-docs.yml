@@ -1,0 +1,40 @@
+formatter: "markdown table"
+
+header-from: main.tf
+
+recursive:
+  enabled: true
+  path: modules
+
+
+output:
+  file: "README.md"
+  mode: replace
+  template: |-
+    [//]: # (BEGIN_TF_DOCS)
+
+    {{ .Content }}
+
+    [//]: # (END_TF_DOCS)
+output-values:
+  enabled: false
+  from: ""
+
+sort:
+  enabled: true
+  by: name
+
+settings:
+  anchor: false # not supported in bitbucket
+  color: true
+  default: true
+  description: false
+  escape: true
+  hide-empty: false
+  html: false
+  indent: 2
+  lockfile: true
+  read-comments: true
+  required: true
+  sensitive: true
+  type: true
