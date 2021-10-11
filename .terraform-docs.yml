@@ -2,9 +2,9 @@ formatter: "markdown table"
 
 header-from: main.tf
 
-recursive:
-  enabled: true
-  path: modules
+# recursive:
+#   enabled: true
+#   path: ./
 
 
 output:
