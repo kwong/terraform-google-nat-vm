@@ -3,6 +3,10 @@ resource "random_id" "suffix" {
   byte_length = 2
 }
 
+/*********************
+ * Forwarding rule
+ ********************/
+
 resource "google_compute_forwarding_rule" "nat_lb_forwarding_rule" {
   project               = var.project
   name                  = format("%s-%s", "nat-lb-forwarding-rule", random_id.suffix.hex)
@@ -43,6 +47,7 @@ resource "google_compute_region_backend_service" "default" {
 resource "google_compute_instance_template" "instance_template" {
   project        = var.project
   name           = format("%s-%s", "nat-lb-mig-template", random_id.suffix.hex)
+  description    = "template for creating NAT instances"
   provider       = google-beta
   machine_type   = var.machine_type
   tags           = ["nat"]
@@ -80,6 +85,7 @@ resource "google_compute_region_health_check" "default" {
   name     = format("%s-%s", "nat-lb-hc", random_id.suffix.hex)
   provider = google-beta
   region   = var.region
+
   tcp_health_check {
     port = "22"
   }
