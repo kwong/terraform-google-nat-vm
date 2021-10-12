@@ -1,3 +1,9 @@
+/**
+ * # terraform-google-nat-vm
+ *
+ * This repository contains a terraform module that allows you to deploy a NAT hosted on GCP's compute instances as backend to a TCP proxy load balancer
+ *
+ */
 
 resource "random_id" "suffix" {
   byte_length = 2
