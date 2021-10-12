@@ -27,6 +27,7 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [google-beta_google_compute_firewall.fw-iap](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_compute_firewall) | resource |
 | [google-beta_google_compute_forwarding_rule.nat_lb_forwarding_rule](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_compute_forwarding_rule) | resource |
 | [google-beta_google_compute_instance_template.instance_template](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_compute_instance_template) | resource |
 | [google-beta_google_compute_region_backend_service.default](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_compute_region_backend_service) | resource |

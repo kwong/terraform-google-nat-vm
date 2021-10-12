@@ -113,3 +113,19 @@ resource "google_compute_region_instance_group_manager" "mig" {
   base_instance_name = "nat-lb-mig"
   target_size        = 2
 }
+
+/****************************************
+ * FW rule to allow IAP and healthcheck
+ ***************************************/
+
+resource "google_compute_firewall" "fw-iap" {
+  project       = var.project
+  name          = "nat-lb-iap-hc"
+  provider      = google-beta
+  direction     = "INGRESS"
+  network       = var.network
+  source_ranges = ["130.211.0.0/22", "35.191.0.0/16", "35.235.240.0/20"]
+  allow {
+    protocol = "tcp"
+  }
+}
