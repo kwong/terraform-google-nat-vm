@@ -74,7 +74,8 @@ resource "google_compute_instance_template" "instance_template" {
     startup-script = <<-EOF
       #! /bin/bash
       sudo sh -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
-      sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+      NET_INTERFACE=$(ip link | awk -F: '$0 !~ "lo|vir|wl|^[^0-9]"{print $2;getline}' | xargs)
+      sudo iptables -t nat -A POSTROUTING -o $${NET_INTERFACE} -j MASQUERADE
       EOF
   }
 
