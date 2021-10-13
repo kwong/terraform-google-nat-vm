@@ -17,7 +17,7 @@ This repository contains a terraform module that allows you to deploy a NAT host
 | Name | Version |
 |------|---------|
 | google | 3.87.0 |
-| google-beta | >= 3.87.0 |
+| google-beta | 3.88.0 |
 | random | 3.1.0 |
 
 ## Modules
@@ -28,7 +28,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [google-beta_google_compute_forwarding_rule.nat_lb_forwarding_rule](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/google_compute_forwarding_rule) | resource |
+| [google-beta_google_compute_forwarding_rule.nat_lb_forwarding_rule](https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/resources/google_compute_forwarding_rule) | resource |
 | [google_compute_firewall.fw-iap](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_firewall) | resource |
 | [google_compute_instance_template.instance_template](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_instance_template) | resource |
 | [google_compute_region_backend_service.default](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/compute_region_backend_service) | resource |
